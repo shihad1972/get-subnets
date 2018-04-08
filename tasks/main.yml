@@ -1,0 +1,12 @@
+---
+# tasks file for get-subnets
+
+- include: get-vpc-info.yml
+- include: subnet_facts_on_name.yml
+  when: subnet_name is defined
+- include: subnet_facts_on_tier.yml
+  when: subnet_tier is defined
+- include: subnet_facts_on_env_tier.yml
+  when: subnet_env_tier is defined
+
+#- debug: var=subnet_ids

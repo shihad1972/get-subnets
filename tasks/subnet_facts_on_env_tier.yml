@@ -1,0 +1,18 @@
+---
+
+- name: Get Subnet facts from Tier and Environment tags
+  ec2_vpc_subnet_facts:
+    region: "{{ region }}"
+    filters:
+      vpc-id: "{{ vpc_id }}"
+      "tag:Tier": "{{ subnet_layer }}"
+      "tag:Environment": "{{ stack }} {{ environ }}"
+  register: ec2_subnets
+
+- name: Set Subnet ID's in fact
+  set_fact:
+    subnet_ids: "{{ ec2_subnets.subnets|map(attribute='id')|list }}"
+  when: ec2_subnets.subnets is defined
+
+- include: az_tags.yml
+  when: subnet_has_az_tags is defined

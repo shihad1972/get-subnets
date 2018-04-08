@@ -1,0 +1,9 @@
+---
+
+- name: Set Availability zones in fact
+  set_fact:
+    subnet_azs: "{{ ec2_subnets.subnets|map(attribute='tags.AZ')|list }}"
+  when: ec2_subnets is defined
+
+#- debug: var=subnet_azs
+#
