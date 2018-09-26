@@ -14,5 +14,5 @@
     subnet_ids: "{{ ec2_subnets.subnets|map(attribute='id')|list }}"
   when: ec2_subnets is defined
 
-- include: az_tags.yml
+- include_tasks: az_tags.yml
   when: subnet_has_az_tags is defined
