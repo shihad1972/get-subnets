@@ -8,10 +8,6 @@
       "tag:Tier": "{{ subnet_tier }}"
   register: ec2_subnets
 
-- debug: var=subnet_tier
-
-- debug: var=ec2_subnets
-
 - name: Set subnet ID's in fact
   set_fact:
     subnet_ids: "{{ ec2_subnets.subnets|map(attribute='id')|list }}"
@@ -19,5 +15,3 @@
 
 - include_tasks: az_tags.yml
   when: subnet_has_az_tags is defined
-
-- debug: var=subnet_ids

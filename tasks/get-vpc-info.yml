@@ -12,7 +12,3 @@
   set_fact:
     vpc_id: "{{ vpc_facts.vpcs[0].id }}"
   when: vpc_id is not defined and vpc_facts.vpcs is defined
-
-- debug: var=vpc_name
-
-- debug: var=vpc_id
