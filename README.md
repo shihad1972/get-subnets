@@ -8,6 +8,7 @@ If you are using the Availability Zone tag key, then you can define
 subnet_has_az_tags to get a the availability zones the subnets are in
 from the subnet_azs variable. The index in this list will correspond to
 the index in the subnet_ids variable
+
 Requirements
 ------------
 
